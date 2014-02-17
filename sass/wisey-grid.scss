@@ -1,0 +1,698 @@
+
+
+/* =============================================
+   GRID SETTINGS
+   ============================================= */
+   
+$gutter: 20px;
+$breakpoint-space: 40px;
+$grid-xl: 1201px;
+$grid-l: 984px;
+$grid-m: 768px;
+$grid-s: 580px;
+$grid-xs: 100%;
+
+
+
+
+$width-1: 8.33%;
+$width-2: 16.66667%;
+$width-3: 25%;
+$width-4: 33.33%;
+$width-5: 41.66667%;
+$width-6: 50%;
+$width-7: 58.33%;
+$width-8: 66.66667%;
+$width-9: 75%;
+$width-10: 83.33%;
+$width-11: 91.66667%;
+$width-12: 100%;
+
+
+
+
+
+
+
+
+/* BORDR-BOX */
+
+*, *:before, *:after	{
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+
+
+
+/* =============================================
+   DEFINE WHERE TO CONVERT THE COLUMNS
+   ============================================= */
+
+/* GRID L */
+$convert-col-1-on-grid-l: col-2;
+$convert-col-2-on-grid-l: –;
+$convert-col-3-on-grid-l: –;
+$convert-col-4-on-grid-l: –;
+$convert-col-5-on-grid-l: –;
+$convert-col-6-on-grid-l: –;
+$convert-col-7-on-grid-l: –;
+$convert-col-8-on-grid-l: –;
+$convert-col-9-on-grid-l: –;
+$convert-col-10-on-grid-l: –;
+$convert-col-11-on-grid-l: –;
+$convert-col-12-on-grid-l: –;
+
+/* GRID M */
+$convert-col-1-on-grid-m: col-3;
+$convert-col-2-on-grid-m: col-4;
+$convert-col-3-on-grid-m: –;
+$convert-col-4-on-grid-m: –;
+$convert-col-5-on-grid-m: –;
+$convert-col-6-on-grid-m: –;
+$convert-col-7-on-grid-m: –;
+$convert-col-8-on-grid-m: –;
+$convert-col-9-on-grid-m: –;
+$convert-col-10-on-grid-m: –;
+$convert-col-11-on-grid-m: –;
+$convert-col-12-on-grid-m: –;
+
+/* GRID S */
+$convert-col-1-on-grid-s: col-4;
+$convert-col-2-on-grid-s: col-6;
+$convert-col-3-on-grid-s: col-6;
+$convert-col-4-on-grid-s: col-12;
+$convert-col-5-on-grid-s: –;
+$convert-col-6-on-grid-s: –;
+$convert-col-7-on-grid-s: –;
+$convert-col-8-on-grid-s: –;
+$convert-col-9-on-grid-s: –;
+$convert-col-10-on-grid-s: –;
+$convert-col-11-on-grid-s: –;
+$convert-col-12-on-grid-s: –;
+
+/* GRID XS */
+$convert-col-1-on-grid-xs: col-6;
+$convert-col-2-on-grid-xs: col-12;
+$convert-col-3-on-grid-xs: col-12;
+$convert-col-4-on-grid-xs: col-12;
+$convert-col-5-on-grid-xs: col-12;
+$convert-col-6-on-grid-xs: col-12;
+$convert-col-7-on-grid-xs: col-12;
+$convert-col-8-on-grid-xs: col-12;
+$convert-col-9-on-grid-xs: col-12;
+$convert-col-10-on-grid-xs: col-12;
+$convert-col-11-on-grid-xs: col-12;
+$convert-col-12-on-grid-xs: –;
+
+
+
+/* =============================================
+   CONVERT COLUMNS MIXINS
+   ============================================= */
+
+@mixin breakit	{
+	overflow: auto;
+
+	&:after	{
+		content: "";
+		display: table;
+		clear: both;
+		}
+}
+
+
+@mixin convert-to-1		{width: $width-1; @include breakit}
+@mixin convert-to-2		{width: $width-2; @include breakit}
+@mixin convert-to-3		{width: $width-3; @include breakit}
+@mixin convert-to-4		{width: $width-4; @include breakit}
+@mixin convert-to-5		{width: $width-5; @include breakit}
+@mixin convert-to-6		{width: $width-6; @include breakit}
+@mixin convert-to-7		{width: $width-7; @include breakit}
+@mixin convert-to-8		{width: $width-8; @include breakit}
+@mixin convert-to-9		{width: $width-9; @include breakit}
+@mixin convert-to-10	{width: $width-10; @include breakit}
+@mixin convert-to-11	{width: $width-11; @include breakit}
+@mixin convert-to-12	{width: $width-12; @include breakit}
+
+
+
+
+/* =============================================
+   SIZE-XL
+   ============================================= */
+   
+.grid {
+	width: $grid-xl;
+	position: relative;
+	left: 50%;
+	margin-left: -$grid-xl / 2 - ($gutter/2);
+	  
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+		}
+	}
+
+[class*='col-'] {
+	float: left;
+	padding-left: $gutter;
+}
+
+
+
+[class*='col-1-span']	{width: $width-1; }
+[class*='col-2-span']	{width: $width-2; }
+[class*='col-3-span']	{width: $width-3; }
+[class*='col-4-span']	{width: $width-4; }
+[class*='col-5-span']	{width: $width-5; }
+[class*='col-6-span']	{width: $width-6; }
+[class*='col-7-span']	{width: $width-7; }
+[class*='col-8-span']	{width: $width-8; }
+[class*='col-9-span']	{width: $width-9; }
+[class*='col-10-span']	{width: $width-10; }
+[class*='col-11-span']	{width: $width-11; }
+[class*='col-12-span']	{width: $width-12; }
+
+/* =============================================
+   SIZE-L
+   ============================================= */
+
+
+@media (max-width:$grid-xl+$breakpoint-space)
+{
+
+.grid {
+	width: $grid-l;
+	margin-left: -$grid-l / 2 - ($gutter/2);
+	}
+
+
+
+@import "grid-l-formeln.scss";
+
+
+
+[class*='-l1c']		{width: $width-1;}
+[class*='-l2c']		{width: $width-2;}
+[class*='-l3c']		{width: $width-3;}
+[class*='-l4c']		{width: $width-4;}
+[class*='-l5c']		{width: $width-5;}
+[class*='-l6c']		{width: $width-6;}
+[class*='-l7c']		{width: $width-7;}
+[class*='-l8c']		{width: $width-8;}
+[class*='-l9c']		{width: $width-9;}
+[class*='-l10c']	{width: $width-10;}
+[class*='-l11c']	{width: $width-11;}
+[class*='-l12c']	{width: $width-12;}
+}
+
+/* =============================================
+   SIZE-M
+   ============================================= */
+
+@media (max-width:$grid-l+$breakpoint-space)
+{
+
+.grid {
+	width: $grid-m;
+	margin-left: -$grid-m / 2 - ($gutter/2);
+	}
+
+
+@import "grid-m-formeln.scss";
+
+
+[class*='-m1c']		{width: $width-1;}
+[class*='-m2c']		{width: $width-2;}
+[class*='-m3c']		{width: $width-3;}
+[class*='-m4c']		{width: $width-4;}
+[class*='-m5c']		{width: $width-5;}
+[class*='-m6c']		{width: $width-6;}
+[class*='-m7c']		{width: $width-7;}
+[class*='-m8c']		{width: $width-8;}
+[class*='-m9c']		{width: $width-9;}
+[class*='-m10c']		{width: $width-10;}
+[class*='-m11c']		{width: $width-11;}
+[class*='-m12c']		{width: $width-12;}
+}
+
+/* =============================================
+   SIZE-S
+   ============================================= */
+
+@media (max-width:$grid-m+$breakpoint-space)
+{
+
+.grid {
+	width: $grid-s;
+	margin-left: -$grid-s / 2 - ($gutter/2);
+	}
+
+
+
+@import "grid-s-formeln.scss";
+
+
+[class*='-s1c']		{width: $width-1;}
+[class*='-s2c']		{width: $width-2;}
+[class*='-s3c']		{width: $width-3;}
+[class*='-s4c']		{width: $width-4;}
+[class*='-s5c']		{width: $width-5;}
+[class*='-s6c']		{width: $width-6;}
+[class*='-s7c']		{width: $width-7;}
+[class*='-s8c']		{width: $width-8;}
+[class*='-s9c']		{width: $width-9;}
+[class*='-s10c']		{width: $width-10;}
+[class*='-s11c']		{width: $width-11;}
+[class*='-s12c']		{width: $width-12;}
+}
+
+/* =============================================
+   SIZE-XS
+   ============================================= */
+
+@media (max-width:$grid-s+$breakpoint-space)
+{
+
+.grid {
+	width: $grid-xs;
+	margin-left: $gutter;
+	}
+
+.grid.no-gutter {
+	width: $grid-xs;
+	margin-left: 0;
+	}
+
+/*
+.grid [class*='col-']	{
+	width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;	
+	}
+*/
+
+@import "grid-xs-formeln.scss";
+
+
+[class*='-xs1c']		{width: $width-1;}
+[class*='-xs2c']		{width: $width-2;}
+[class*='-xs3c']		{width: $width-3;}
+[class*='-xs4c']		{width: $width-4;}
+[class*='-xs5c']		{width: $width-5;}
+[class*='-xs6c']		{width: $width-6;}
+[class*='-xs7c']		{width: $width-7;}
+[class*='-xs8c']		{width: $width-8;}
+[class*='-xs9c']		{width: $width-9;}
+[class*='-xs10c']	{width: $width-10;}
+[class*='-xs11c']	{width: $width-11;}
+[class*='-xs12c']	{width: $width-12;}
+}
+
+
+
+
+
+
+
+/* =============================================
+   GRID NO-GUTTER
+   ============================================= */
+
+
+/* GUTTER ADJUSTEMENT */
+
+.grid.no-gutter [class*='col-']	{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+
+
+/* =============================================
+   GRID XL NO-GUTTER
+   ============================================= */
+
+.grid.no-gutter {
+	width: $grid-xl - $gutter;
+	margin-left: -$grid-xl / 2 + ($gutter/2);
+	}
+
+
+
+/* =============================================
+   GRID L NO-GUTTER
+   ============================================= */
+
+@media (max-width:$grid-xl+40px)
+{
+.grid.no-gutter {
+	width: $grid-l - $gutter;
+	margin-left: -$grid-l / 2 + ($gutter/2);
+	}
+}
+
+
+/* =============================================
+   GRID M NO-GUTTER
+   ============================================= */
+
+@media (max-width:$grid-l+40px)
+{
+.grid.no-gutter {
+	width: $grid-m - $gutter;
+	margin-left: -$grid-m / 2 + ($gutter/2);
+	}
+}
+
+
+/* =============================================
+   GRID S NO-GUTTER
+   ============================================= */
+
+@media (max-width:$grid-m+40px)
+{
+.grid.no-gutter {
+	width: $grid-s - $gutter;
+	margin-left: -$grid-s / 2 + ($gutter/2);
+	}
+
+}
+
+
+
+/* =============================================
+   INNER GRID
+   ============================================= */
+
+
+.grid.colpad [class*='col-']	{
+	padding-left: $gutter !important;
+	padding-right: $gutter !important;
+}
+
+
+
+
+
+/* =============================================
+   PUSH
+   ============================================= */
+
+
+.push-1		{margin-left: $width-1; }
+.push-2		{margin-left: $width-2; }
+.push-3		{margin-left: $width-3; }
+.push-4		{margin-left: $width-4; }
+.push-5		{margin-left: $width-5; }
+.push-6		{margin-left: $width-6; }
+.push-7		{margin-left: $width-7; }
+.push-8		{margin-left: $width-8;}
+.push-9		{margin-left: $width-9; }
+.push-10	{margin-left: $width-10; }
+.push-11	{margin-left: $width-11;}
+
+@media (max-width:$grid-s+40px)
+{
+	[class*='push-']	{
+		margin-left: 0;
+	}
+}
+
+
+/* =============================================
+   CENTER / RIGHT
+   ============================================= */
+
+
+.right	{
+	float: right;
+}
+
+.center	{
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.grid [class*='col-']:only-child, .grid [class*='col-'].center	{
+	overflow: auto;
+	}
+	
+
+.nested	{
+	padding-left: 0;
+}
+
+
+
+/* =============================================
+   GRID BORDER-GUTTER
+   ============================================= */
+
+.border-gutter	{
+	margin-left: -$grid-xl / 2;
+	}
+
+.border-gutter [class*='col-']	{
+	padding-left: 0;
+	padding-right: 0;
+	position: relative;
+	left: 0px;
+	border-left: 10px solid rgba(0,0,0,0);
+	border-right: 10px solid rgba(0,0,0,0);
+	-moz-background-clip: padding;     /* Firefox 3.6 */
+	-webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+	background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+}
+
+.border-gutter [class*='col-']:first-child	{
+	margin-left: 0px;
+}
+
+
+
+@media (max-width:$grid-xl+40px)
+{
+.border-gutter {
+	margin-left: -$grid-l / 2;
+	}
+}
+
+
+@media (max-width:$grid-l+40px)
+{
+.border-gutter {
+	margin-left: -$grid-m / 2;
+	}
+}
+
+@media (max-width:$grid-m+40px)
+{
+.border-gutter {
+	margin-left: -$grid-s / 2;
+	}
+
+}
+
+@media (max-width:$grid-s+40px)
+{
+.border-gutter {
+	margin-left: 0;
+	}
+
+.border-gutter [class*='col-']	{
+	border-left: none;
+	border-right: none;
+	}
+
+}
+
+
+
+
+
+
+/* =============================================
+   GRID XS
+   ============================================= */
+
+@media (max-width:$grid-s+40px)
+{
+.grid {
+	width: 100%;
+	left: 0%;
+	margin-left: 0%;
+	}
+
+.grid [class*='col-'] {
+	padding-left: $gutter/2;
+	padding-right: $gutter/2;
+	overflow: auto;
+	}
+
+}
+
+
+
+
+/* =============================================
+   GRID XS NO-GUTTER
+   ============================================= */
+
+@media (max-width:$grid-s+40px)
+{
+.grid.no-gutter {
+	width: 100%;
+	left: 0%;
+	margin-left: 0%;
+	}
+
+.grid.no-gutter [class*='col-'] {
+	padding-left: 0px;
+	overflow: auto;
+	}
+
+.grid.no-gutter [class*='col-'] {
+	float: none;
+	width: 100%;
+	}
+
+.grid.no-gutter [class*='col-']:after {
+	content: "";
+	display: table;
+	clear: both;
+	}
+
+}
+
+
+
+/* =============================================
+   GRID XS BORDER-GUTTER
+   ============================================= */
+
+@media (max-width:$grid-s+40px)
+{
+.grid.border-gutter {
+	left: 0%;
+	margin-left: 0%;
+	}
+
+.grid.no-gutter [class*='col-'] {
+	padding-left: 0px;
+	overflow: auto;
+	}
+
+.grid.no-gutter [class*='col-'] {
+	float: none;
+	width: 100%;
+	}
+
+.grid.no-gutter [class*='col-']:after {
+	content: "";
+	display: table;
+	clear: both;
+	}
+
+}
+
+
+
+
+/* =============================================
+   EQUAL HEIGHTS
+   ============================================= */
+
+.grid.equal	{
+	overflow: hidden;
+	}
+
+.grid.equal [class*='col-'] {
+	padding-bottom: 1000%;
+	margin-bottom: -1000%;
+	}
+
+
+
+
+
+/* =========================================================
+   FIX WEBKIT SUBPIXEL ISSUE (include detect-browser.js, adding to the width:0,078125%) 
+   ========================================================= */
+
+
+
+@function perctopx($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+
+/*
+$width-1: ceil((perctopx($grid-xl) / 12)*1px);
+*/
+
+
+
+$grid-xl-no-gutter: $grid-xl - $gutter; /* for Grid XL no-gutter*/
+$spaltenbreite-col-6: $grid-xl-no-gutter / 2; /* for col-6-span */
+$spaltenbreite-col-4: $grid-xl-no-gutter / 3; /* for col-4-span */
+$spaltenbreite-col-3: $grid-xl-no-gutter / 4; /* for col-3-span */
+$spaltenbreite-col-2: $grid-xl-no-gutter / 6; /* for col-2-span */
+$spaltenbreite-col-1: $grid-xl-no-gutter / 12; /* for col-1-span */
+
+$spaltenbreite-col-6-safari: floor($spaltenbreite-col-6); /* rendered Column width in safari for col-6-span */
+$spaltenbreite-col-4-safari: floor($spaltenbreite-col-4); /* rendered Column width in safari for col-4-span */
+$spaltenbreite-col-3-safari: floor($spaltenbreite-col-3); /* rendered Column width in safari for col-3-span */
+$spaltenbreite-col-2-safari: floor($spaltenbreite-col-2); /* rendered Column width in safari for col-2-span */
+$spaltenbreite-col-1-safari: floor($spaltenbreite-col-1); /* rendered Column width in safari for col-1-span */
+
+$missing-pixels-col-6: $grid-xl-no-gutter - (2 * $spaltenbreite-col-6-safari); /* missing Pixels in safari for col-6-span */
+$missing-pixels-col-4: $grid-xl-no-gutter - (3 * $spaltenbreite-col-4-safari); /* missing Pixels in safari for col-4-span */
+$missing-pixels-col-3: $grid-xl-no-gutter - (4 * $spaltenbreite-col-3-safari); /* missing Pixels in safari for col-3-span */
+$missing-pixels-col-2: $grid-xl-no-gutter - (6 * $spaltenbreite-col-2-safari); /* missing Pixels in safari for col-2-span */
+$missing-pixels-col-1: $grid-xl-no-gutter - (12 * $spaltenbreite-col-1-safari); /* missing Pixels in safari for col-1-span */
+
+
+/* Remove Pixel unit for a calculation how many elements have to add some space */
+$elements-for-col-6: perctopx($missing-pixels-col-6); 
+$elements-for-col-4: perctopx($missing-pixels-col-4); 
+$elements-for-col-3: perctopx($missing-pixels-col-3); 
+$elements-for-col-2: perctopx($missing-pixels-col-1); 
+$elements-for-col-1: perctopx($missing-pixels-col-1); 
+
+
+
+/* calculate the width of the column in Pixels depending on the grid settings*/
+$width-col-6-no-gutter-in-pixel: floor((perctopx($grid-xl-no-gutter) / 2)*1px); 
+$width-col-4-no-gutter-in-pixel: floor((perctopx($grid-xl-no-gutter) / 3)*1px); 
+$width-col-3-no-gutter-in-pixel: floor((perctopx($grid-xl-no-gutter) / 4)*1px); 
+$width-col-2-no-gutter-in-pixel: floor((perctopx($grid-xl-no-gutter) / 6)*1px); 
+$width-col-1-no-gutter-in-pixel: floor((perctopx($grid-xl-no-gutter) / 12)*1px); 
+
+
+
+
+
+
+@media only screen and (-webkit-min-device-pixel-ratio:0) and (min-width: $grid-xl) 
+{ 
+    /* Safari and Chrome */
+	.safari .no-gutter .col-1-span:nth-child(-n+#{$elements-for-col-1})	{width: $width-col-1-no-gutter-in-pixel + 1px;}
+	.safari .no-gutter .col-2-span:nth-child(-n+#{$elements-for-col-2})	{width: $width-col-2-no-gutter-in-pixel + 1px;}
+	.safari .no-gutter .col-3-span:nth-child(-n+#{$elements-for-col-3})	{width: $width-col-3-no-gutter-in-pixel + 1px;}
+	.safari .no-gutter .col-4-span:nth-child(-n+#{$elements-for-col-4})	{width: $width-col-4-no-gutter-in-pixel + 1px;}
+	.safari .no-gutter .col-6-span:nth-child(-n+#{$elements-for-col-6})	{width: $width-col-6-no-gutter-in-pixel + 1px;}
+	
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio:0) and (min-width: $grid-l) 
+{ 
+    /* Safari and Chrome */
+}
+
