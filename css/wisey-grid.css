@@ -1293,6 +1293,3 @@ $width-1: ceil((perctopx($grid-xl) / 12)*1px);
     padding-bottom: 270px;
   }
 }
-body {
-  border-right: 270px solid green;
-}
