@@ -24,7 +24,9 @@
         "sass\/_grid-l-formeln.scss",
         "sass\/_grid-m-formeln.scss",
         "sass\/_grid-s-formeln.scss",
-        "sass\/_grid-xs-formeln.scss"
+        "sass\/_grid-xs-formeln.scss",
+        "sass\/_safari-pixel-fix.scss",
+        "sass\/_tiles.scss"
       ]
     },
     "sass\/_grid-xs-formeln.scss" : {
@@ -42,11 +44,23 @@
     "detect-browser.js" : {
       "output" : "detect-browser.out.js"
     },
+    "sass\/_tiles.scss" : {
+      "output" : "sass\/_tiles.css",
+      "profiles" : {
+        "sass" : "00000000-0000-0000-0000-000000000000"
+      }
+    },
     "css\/layout.css" : {
       "output" : "css\/layout.out.css"
     },
     "sass\/_grid-l-formeln.scss" : {
       "output" : "sass\/_grid-l-formeln.css",
+      "profiles" : {
+        "sass" : "00000000-0000-0000-0000-000000000000"
+      }
+    },
+    "sass\/_safari-pixel-fix.scss" : {
+      "output" : "sass\/_safari-pixel-fix.css",
       "profiles" : {
         "sass" : "00000000-0000-0000-0000-000000000000"
       }
@@ -102,7 +116,7 @@
     "sass" : {
       "00000000-0000-0000-0000-000000000000" : {
         "name" : "Default Sass Profile",
-        "style" : "compressed",
+        "style" : "expanded",
         "debug" : 0
       }
     },

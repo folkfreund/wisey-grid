@@ -1,0 +1,449 @@
+
+
+
+/* =========================================================
+   FIX WEBKIT SUBPIXEL ISSUE (include detect-browser.js) 
+   ========================================================= */
+
+
+
+.safari .grid > [class*='col-'].nested [class*='col-']:last-child	{float: right;}
+
+
+
+@function perctopx($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+
+/*
+$width-1: ceil((perctopx($grid-xl) / 12)*1px);
+*/
+
+
+
+
+ /* ============================ GRID XL ============================= */
+
+$grid-xl-no-gutter: $grid-xl - $gutter; /* for Grid XL no-gutter*/
+
+$spaltenbreite-col-6: $grid-xl-no-gutter / 2; /* for col-6-span */
+$spaltenbreite-col-4: $grid-xl-no-gutter / 3; /* for col-4-span */
+$spaltenbreite-col-3: $grid-xl-no-gutter / 4; /* for col-3-span */
+$spaltenbreite-col-2: $grid-xl-no-gutter / 6; /* for col-2-span */
+$spaltenbreite-col-1: $grid-xl-no-gutter / 12; /* for col-1-span */
+
+$spaltenbreite-col-6-safari: floor($spaltenbreite-col-6); /* rendered Column width in safari for col-6-span */
+$spaltenbreite-col-4-safari: floor($spaltenbreite-col-4); /* rendered Column width in safari for col-4-span */
+$spaltenbreite-col-3-safari: floor($spaltenbreite-col-3); /* rendered Column width in safari for col-3-span */
+$spaltenbreite-col-2-safari: floor($spaltenbreite-col-2); /* rendered Column width in safari for col-2-span */
+$spaltenbreite-col-1-safari: floor($spaltenbreite-col-1); /* rendered Column width in safari for col-1-span */
+
+$missing-pixels-col-6: $grid-xl-no-gutter - (2 * $spaltenbreite-col-6-safari); /* missing Pixels in safari for col-6-span */
+$missing-pixels-col-4: $grid-xl-no-gutter - (3 * $spaltenbreite-col-4-safari); /* missing Pixels in safari for col-4-span */
+$missing-pixels-col-3: $grid-xl-no-gutter - (4 * $spaltenbreite-col-3-safari); /* missing Pixels in safari for col-3-span */
+$missing-pixels-col-2: $grid-xl-no-gutter - (6 * $spaltenbreite-col-2-safari); /* missing Pixels in safari for col-2-span */
+$missing-pixels-col-1: $grid-xl-no-gutter - (12 * $spaltenbreite-col-1-safari); /* missing Pixels in safari for col-1-span */
+
+
+/* Remove Pixel unit for a calculation how many elements have to add some space */
+$elements-for-col-6: perctopx($missing-pixels-col-6); 
+$elements-for-col-4: perctopx($missing-pixels-col-4); 
+$elements-for-col-3: perctopx($missing-pixels-col-3); 
+$elements-for-col-2: perctopx($missing-pixels-col-2); 
+$elements-for-col-1: perctopx($missing-pixels-col-1); 
+
+
+
+/* calculate the width of the column in Pixels depending on the grid settings*/
+$width-col-6-no-gutter-in-pixel: floor((perctopx($grid-xl-no-gutter) / 2)*1px); 
+$width-col-4-no-gutter-in-pixel: floor((perctopx($grid-xl-no-gutter) / 3)*1px); 
+$width-col-3-no-gutter-in-pixel: floor((perctopx($grid-xl-no-gutter) / 4)*1px); 
+$width-col-2-no-gutter-in-pixel: floor((perctopx($grid-xl-no-gutter) / 6)*1px); 
+$width-col-1-no-gutter-in-pixel: floor((perctopx($grid-xl-no-gutter) / 12)*1px); 
+
+
+ /* ============================ GRID XL ohne Gutter ============================= */
+
+$spaltenbreite-col-6-with-gutter: $grid-xl / 2; /* for col-6-span */
+$spaltenbreite-col-4-with-gutter: $grid-xl / 3; /* for col-4-span */
+$spaltenbreite-col-3-with-gutter: $grid-xl / 4; /* for col-3-span */
+$spaltenbreite-col-2-with-gutter: $grid-xl / 6; /* for col-2-span */
+$spaltenbreite-col-1-with-gutter: $grid-xl / 12; /* for col-1-span */
+
+$spaltenbreite-col-6-with-gutter-safari: floor($spaltenbreite-col-6-with-gutter); /* rendered Column width in safari for col-6-span */
+$spaltenbreite-col-4-with-gutter-safari: floor($spaltenbreite-col-4-with-gutter); /* rendered Column width in safari for col-4-span */
+$spaltenbreite-col-3-with-gutter-safari: floor($spaltenbreite-col-3-with-gutter); /* rendered Column width in safari for col-3-span */
+$spaltenbreite-col-2-with-gutter-safari: floor($spaltenbreite-col-2-with-gutter); /* rendered Column width in safari for col-2-span */
+$spaltenbreite-col-1-with-gutter-safari: floor($spaltenbreite-col-1-with-gutter); /* rendered Column width in safari for col-1-span */
+
+$missing-pixels-col-6-with-gutter: $grid-xl - (2 * $spaltenbreite-col-6-with-gutter-safari); /* missing Pixels in safari for col-6-span */
+$missing-pixels-col-4-with-gutter: $grid-xl - (3 * $spaltenbreite-col-4-with-gutter-safari); /* missing Pixels in safari for col-4-span */
+$missing-pixels-col-3-with-gutter: $grid-xl - (4 * $spaltenbreite-col-3-with-gutter-safari); /* missing Pixels in safari for col-3-span */
+$missing-pixels-col-2-with-gutter: $grid-xl - (6 * $spaltenbreite-col-2-with-gutter-safari); /* missing Pixels in safari for col-2-span */
+$missing-pixels-col-1-with-gutter: $grid-xl - (12 * $spaltenbreite-col-1-with-gutter-safari); /* missing Pixels in safari for col-1-span */
+
+/* Remove Pixel unit for a calculation how many elements have to add some space */
+$elements-for-col-6-with-gutter: perctopx($missing-pixels-col-6-with-gutter); 
+$elements-for-col-4-with-gutter: perctopx($missing-pixels-col-4-with-gutter); 
+$elements-for-col-3-with-gutter: perctopx($missing-pixels-col-3-with-gutter); 
+$elements-for-col-2-with-gutter: perctopx($missing-pixels-col-2-with-gutter); 
+$elements-for-col-1-with-gutter: perctopx($missing-pixels-col-1-with-gutter); 
+
+
+/* calculate the width of the column in Pixels depending on the grid settings*/
+$width-col-6-with-gutter-in-pixel: floor((perctopx($grid-xl) / 2)*1px); 
+$width-col-4-with-gutter-in-pixel: floor((perctopx($grid-xl) / 3)*1px); 
+$width-col-3-with-gutter-in-pixel: floor((perctopx($grid-xl) / 4)*1px); 
+$width-col-2-with-gutter-in-pixel: floor((perctopx($grid-xl) / 6)*1px); 
+$width-col-1-with-gutter-in-pixel: floor((perctopx($grid-xl) / 12)*1px); 
+
+
+
+
+
+ /* ============================ GRID L ============================= */
+
+$grid-l-no-gutter: $grid-l - $gutter; /* for Grid L no-gutter*/
+
+$spaltenbreite-col-6-grid-l: $grid-l-no-gutter / 2; /* for col-6-span */
+$spaltenbreite-col-4-grid-l: $grid-l-no-gutter / 3; /* for col-4-span */
+$spaltenbreite-col-3-grid-l: $grid-l-no-gutter / 4; /* for col-3-span */
+$spaltenbreite-col-2-grid-l: $grid-l-no-gutter / 6; /* for col-2-span */
+$spaltenbreite-col-1-grid-l: $grid-l-no-gutter / 12; /* for col-1-span */
+
+$spaltenbreite-col-6-safari-grid-l: floor($spaltenbreite-col-6-grid-l); /* rendered Column width in safari for col-6-span */
+$spaltenbreite-col-4-safari-grid-l: floor($spaltenbreite-col-4-grid-l); /* rendered Column width in safari for col-4-span */
+$spaltenbreite-col-3-safari-grid-l: floor($spaltenbreite-col-3-grid-l); /* rendered Column width in safari for col-3-span */
+$spaltenbreite-col-2-safari-grid-l: floor($spaltenbreite-col-2-grid-l); /* rendered Column width in safari for col-2-span */
+$spaltenbreite-col-1-safari-grid-l: floor($spaltenbreite-col-1-grid-l); /* rendered Column width in safari for col-1-span */
+
+$missing-pixels-col-6-grid-l: $grid-l-no-gutter - (2 * $spaltenbreite-col-6-safari-grid-l); /* missing Pixels in safari for col-6-span */
+$missing-pixels-col-4-grid-l: $grid-l-no-gutter - (3 * $spaltenbreite-col-4-safari-grid-l); /* missing Pixels in safari for col-4-span */
+$missing-pixels-col-3-grid-l: $grid-l-no-gutter - (4 * $spaltenbreite-col-3-safari-grid-l); /* missing Pixels in safari for col-3-span */
+$missing-pixels-col-2-grid-l: $grid-l-no-gutter - (6 * $spaltenbreite-col-2-safari-grid-l); /* missing Pixels in safari for col-2-span */
+$missing-pixels-col-1-grid-l: $grid-l-no-gutter - (12 * $spaltenbreite-col-1-safari-grid-l); /* missing Pixels in safari for col-1-span */
+
+
+/* Remove Pixel unit for a calculation how many elements have to add some space */
+$elements-for-col-6-grid-l: perctopx($missing-pixels-col-6-grid-l); 
+$elements-for-col-4-grid-l: perctopx($missing-pixels-col-4-grid-l); 
+$elements-for-col-3-grid-l: perctopx($missing-pixels-col-3-grid-l); 
+$elements-for-col-2-grid-l: perctopx($missing-pixels-col-2-grid-l); 
+$elements-for-col-1-grid-l: perctopx($missing-pixels-col-1-grid-l); 
+
+
+
+/* calculate the width of the column in Pixels depending on the grid settings*/
+$width-col-6-no-gutter-in-pixel-grid-l: floor((perctopx($grid-l-no-gutter) / 2)*1px); 
+$width-col-4-no-gutter-in-pixel-grid-l: floor((perctopx($grid-l-no-gutter) / 3)*1px); 
+$width-col-3-no-gutter-in-pixel-grid-l: floor((perctopx($grid-l-no-gutter) / 4)*1px); 
+$width-col-2-no-gutter-in-pixel-grid-l: floor((perctopx($grid-l-no-gutter) / 6)*1px); 
+$width-col-1-no-gutter-in-pixel-grid-l: floor((perctopx($grid-l-no-gutter) / 12)*1px); 
+
+
+ /* ============================ GRID L ohne Gutter ============================= */
+
+$spaltenbreite-col-6-with-gutter-grid-l: $grid-l / 2; /* for col-6-span */
+$spaltenbreite-col-4-with-gutter-grid-l: $grid-l / 3; /* for col-4-span */
+$spaltenbreite-col-3-with-gutter-grid-l: $grid-l / 4; /* for col-3-span */
+$spaltenbreite-col-2-with-gutter-grid-l: $grid-l / 6; /* for col-2-span */
+$spaltenbreite-col-1-with-gutter-grid-l: $grid-l / 12; /* for col-1-span */
+
+$spaltenbreite-col-6-with-gutter-safari-grid-l: floor($spaltenbreite-col-6-with-gutter-grid-l); /* rendered Column width in safari for col-6-span */
+$spaltenbreite-col-4-with-gutter-safari-grid-l: floor($spaltenbreite-col-4-with-gutter-grid-l); /* rendered Column width in safari for col-4-span */
+$spaltenbreite-col-3-with-gutter-safari-grid-l: floor($spaltenbreite-col-3-with-gutter-grid-l); /* rendered Column width in safari for col-3-span */
+$spaltenbreite-col-2-with-gutter-safari-grid-l: floor($spaltenbreite-col-2-with-gutter-grid-l); /* rendered Column width in safari for col-2-span */
+$spaltenbreite-col-1-with-gutter-safari-grid-l: floor($spaltenbreite-col-1-with-gutter-grid-l); /* rendered Column width in safari for col-1-span */
+
+$missing-pixels-col-6-with-gutter-grid-l: $grid-l - (2 * $spaltenbreite-col-6-with-gutter-safari-grid-l); /* missing Pixels in safari for col-6-span */
+$missing-pixels-col-4-with-gutter-grid-l: $grid-l - (3 * $spaltenbreite-col-4-with-gutter-safari-grid-l); /* missing Pixels in safari for col-4-span */
+$missing-pixels-col-3-with-gutter-grid-l: $grid-l - (4 * $spaltenbreite-col-3-with-gutter-safari-grid-l); /* missing Pixels in safari for col-3-span */
+$missing-pixels-col-2-with-gutter-grid-l: $grid-l - (6 * $spaltenbreite-col-2-with-gutter-safari-grid-l); /* missing Pixels in safari for col-2-span */
+$missing-pixels-col-1-with-gutter-grid-l: $grid-l - (12 * $spaltenbreite-col-1-with-gutter-safari-grid-l); /* missing Pixels in safari for col-1-span */
+
+/* Remove Pixel unit for a calculation how many elements have to add some space */
+$elements-for-col-6-with-gutter-grid-l: perctopx($missing-pixels-col-6-with-gutter-grid-l); 
+$elements-for-col-4-with-gutter-grid-l: perctopx($missing-pixels-col-4-with-gutter-grid-l); 
+$elements-for-col-3-with-gutter-grid-l: perctopx($missing-pixels-col-3-with-gutter-grid-l); 
+$elements-for-col-2-with-gutter-grid-l: perctopx($missing-pixels-col-2-with-gutter-grid-l); 
+$elements-for-col-1-with-gutter-grid-l: perctopx($missing-pixels-col-1-with-gutter-grid-l); 
+
+
+/* calculate the width of the column in Pixels depending on the grid settings*/
+$width-col-6-with-gutter-in-pixel-grid-l: floor((perctopx($grid-l) / 2)*1px); 
+$width-col-4-with-gutter-in-pixel-grid-l: floor((perctopx($grid-l) / 3)*1px); 
+$width-col-3-with-gutter-in-pixel-grid-l: floor((perctopx($grid-l) / 4)*1px); 
+$width-col-2-with-gutter-in-pixel-grid-l: floor((perctopx($grid-l) / 6)*1px); 
+$width-col-1-with-gutter-in-pixel-grid-l: floor((perctopx($grid-l) / 12)*1px); 
+
+
+
+
+ /* ============================ GRID M ============================= */
+
+$grid-m-no-gutter: $grid-m - $gutter; /* for Grid M no-gutter*/
+
+$spaltenbreite-col-6-grid-m: $grid-m-no-gutter / 2; /* for col-6-span */
+$spaltenbreite-col-4-grid-m: $grid-m-no-gutter / 3; /* for col-4-span */
+$spaltenbreite-col-3-grid-m: $grid-m-no-gutter / 4; /* for col-3-span */
+$spaltenbreite-col-2-grid-m: $grid-m-no-gutter / 6; /* for col-2-span */
+$spaltenbreite-col-1-grid-m: $grid-m-no-gutter / 12; /* for col-1-span */
+
+$spaltenbreite-col-6-safari-grid-m: floor($spaltenbreite-col-6-grid-m); /* rendered Column width in safari for col-6-span */
+$spaltenbreite-col-4-safari-grid-m: floor($spaltenbreite-col-4-grid-m); /* rendered Column width in safari for col-4-span */
+$spaltenbreite-col-3-safari-grid-m: floor($spaltenbreite-col-3-grid-m); /* rendered Column width in safari for col-3-span */
+$spaltenbreite-col-2-safari-grid-m: floor($spaltenbreite-col-2-grid-m); /* rendered Column width in safari for col-2-span */
+$spaltenbreite-col-1-safari-grid-m: floor($spaltenbreite-col-1-grid-m); /* rendered Column width in safari for col-1-span */
+
+$missing-pixels-col-6-grid-m: $grid-m-no-gutter - (2 * $spaltenbreite-col-6-safari-grid-m); /* missing Pixels in safari for col-6-span */
+$missing-pixels-col-4-grid-m: $grid-m-no-gutter - (3 * $spaltenbreite-col-4-safari-grid-m); /* missing Pixels in safari for col-4-span */
+$missing-pixels-col-3-grid-m: $grid-m-no-gutter - (4 * $spaltenbreite-col-3-safari-grid-m); /* missing Pixels in safari for col-3-span */
+$missing-pixels-col-2-grid-m: $grid-m-no-gutter - (6 * $spaltenbreite-col-2-safari-grid-m); /* missing Pixels in safari for col-2-span */
+$missing-pixels-col-1-grid-m: $grid-m-no-gutter - (12 * $spaltenbreite-col-1-safari-grid-m); /* missing Pixels in safari for col-1-span */
+
+
+/* Remove Pixel unit for a calculation how many elements have to add some space */
+$elements-for-col-6-grid-m: perctopx($missing-pixels-col-6-grid-m); 
+$elements-for-col-4-grid-m: perctopx($missing-pixels-col-4-grid-m); 
+$elements-for-col-3-grid-m: perctopx($missing-pixels-col-3-grid-m); 
+$elements-for-col-2-grid-m: perctopx($missing-pixels-col-2-grid-m); 
+$elements-for-col-1-grid-m: perctopx($missing-pixels-col-1-grid-m); 
+
+
+
+/* calculate the width of the column in Pixels depending on the grid settings*/
+$width-col-6-no-gutter-in-pixel-grid-m: floor((perctopx($grid-m-no-gutter) / 2)*1px); 
+$width-col-4-no-gutter-in-pixel-grid-m: floor((perctopx($grid-m-no-gutter) / 3)*1px); 
+$width-col-3-no-gutter-in-pixel-grid-m: floor((perctopx($grid-m-no-gutter) / 4)*1px); 
+$width-col-2-no-gutter-in-pixel-grid-m: floor((perctopx($grid-m-no-gutter) / 6)*1px); 
+$width-col-1-no-gutter-in-pixel-grid-m: floor((perctopx($grid-m-no-gutter) / 12)*1px); 
+
+
+ /* ============================ GRID M ohne Gutter ============================= */
+
+$spaltenbreite-col-6-with-gutter-grid-m: $grid-m / 2; /* for col-6-span */
+$spaltenbreite-col-4-with-gutter-grid-m: $grid-m / 3; /* for col-4-span */
+$spaltenbreite-col-3-with-gutter-grid-m: $grid-m / 4; /* for col-3-span */
+$spaltenbreite-col-2-with-gutter-grid-m: $grid-m / 6; /* for col-2-span */
+$spaltenbreite-col-1-with-gutter-grid-m: $grid-m / 12; /* for col-1-span */
+
+$spaltenbreite-col-6-with-gutter-safari-grid-m: floor($spaltenbreite-col-6-with-gutter-grid-m); /* rendered Column width in safari for col-6-span */
+$spaltenbreite-col-4-with-gutter-safari-grid-m: floor($spaltenbreite-col-4-with-gutter-grid-m); /* rendered Column width in safari for col-4-span */
+$spaltenbreite-col-3-with-gutter-safari-grid-m: floor($spaltenbreite-col-3-with-gutter-grid-m); /* rendered Column width in safari for col-3-span */
+$spaltenbreite-col-2-with-gutter-safari-grid-m: floor($spaltenbreite-col-2-with-gutter-grid-m); /* rendered Column width in safari for col-2-span */
+$spaltenbreite-col-1-with-gutter-safari-grid-m: floor($spaltenbreite-col-1-with-gutter-grid-m); /* rendered Column width in safari for col-1-span */
+
+$missing-pixels-col-6-with-gutter-grid-m: $grid-m - (2 * $spaltenbreite-col-6-with-gutter-safari-grid-m); /* missing Pixels in safari for col-6-span */
+$missing-pixels-col-4-with-gutter-grid-m: $grid-m - (3 * $spaltenbreite-col-4-with-gutter-safari-grid-m); /* missing Pixels in safari for col-4-span */
+$missing-pixels-col-3-with-gutter-grid-m: $grid-m - (4 * $spaltenbreite-col-3-with-gutter-safari-grid-m); /* missing Pixels in safari for col-3-span */
+$missing-pixels-col-2-with-gutter-grid-m: $grid-m - (6 * $spaltenbreite-col-2-with-gutter-safari-grid-m); /* missing Pixels in safari for col-2-span */
+$missing-pixels-col-1-with-gutter-grid-m: $grid-m - (12 * $spaltenbreite-col-1-with-gutter-safari-grid-m); /* missing Pixels in safari for col-1-span */
+
+/* Remove Pixel unit for a calculation how many elements have to add some space */
+$elements-for-col-6-with-gutter-grid-m: perctopx($missing-pixels-col-6-with-gutter-grid-m); 
+$elements-for-col-4-with-gutter-grid-m: perctopx($missing-pixels-col-4-with-gutter-grid-m); 
+$elements-for-col-3-with-gutter-grid-m: perctopx($missing-pixels-col-3-with-gutter-grid-m); 
+$elements-for-col-2-with-gutter-grid-m: perctopx($missing-pixels-col-2-with-gutter-grid-m); 
+$elements-for-col-1-with-gutter-grid-m: perctopx($missing-pixels-col-1-with-gutter-grid-m); 
+
+
+/* calculate the width of the column in Pixels depending on the grid settings*/
+$width-col-6-with-gutter-in-pixel-grid-m: floor((perctopx($grid-m) / 2)*1px); 
+$width-col-4-with-gutter-in-pixel-grid-m: floor((perctopx($grid-m) / 3)*1px); 
+$width-col-3-with-gutter-in-pixel-grid-m: floor((perctopx($grid-m) / 4)*1px); 
+$width-col-2-with-gutter-in-pixel-grid-m: floor((perctopx($grid-m) / 6)*1px); 
+$width-col-1-with-gutter-in-pixel-grid-m: floor((perctopx($grid-m) / 12)*1px); 
+
+
+
+ /* ============================ GRID S ============================= */
+
+$grid-s-no-gutter: $grid-s - $gutter; /* for Grid S no-gutter*/
+
+$spaltenbreite-col-6-grid-s: $grid-s-no-gutter / 2; /* for col-6-span */
+$spaltenbreite-col-4-grid-s: $grid-s-no-gutter / 3; /* for col-4-span */
+$spaltenbreite-col-3-grid-s: $grid-s-no-gutter / 4; /* for col-3-span */
+$spaltenbreite-col-2-grid-s: $grid-s-no-gutter / 6; /* for col-2-span */
+$spaltenbreite-col-1-grid-s: $grid-s-no-gutter / 12; /* for col-1-span */
+
+$spaltenbreite-col-6-safari-grid-s: floor($spaltenbreite-col-6-grid-s); /* rendered Column width in safari for col-6-span */
+$spaltenbreite-col-4-safari-grid-s: floor($spaltenbreite-col-4-grid-s); /* rendered Column width in safari for col-4-span */
+$spaltenbreite-col-3-safari-grid-s: floor($spaltenbreite-col-3-grid-s); /* rendered Column width in safari for col-3-span */
+$spaltenbreite-col-2-safari-grid-s: floor($spaltenbreite-col-2-grid-s); /* rendered Column width in safari for col-2-span */
+$spaltenbreite-col-1-safari-grid-s: floor($spaltenbreite-col-1-grid-s); /* rendered Column width in safari for col-1-span */
+
+$missing-pixels-col-6-grid-s: $grid-s-no-gutter - (2 * $spaltenbreite-col-6-safari-grid-s); /* missing Pixels in safari for col-6-span */
+$missing-pixels-col-4-grid-s: $grid-s-no-gutter - (3 * $spaltenbreite-col-4-safari-grid-s); /* missing Pixels in safari for col-4-span */
+$missing-pixels-col-3-grid-s: $grid-s-no-gutter - (4 * $spaltenbreite-col-3-safari-grid-s); /* missing Pixels in safari for col-3-span */
+$missing-pixels-col-2-grid-s: $grid-s-no-gutter - (6 * $spaltenbreite-col-2-safari-grid-s); /* missing Pixels in safari for col-2-span */
+$missing-pixels-col-1-grid-s: $grid-s-no-gutter - (12 * $spaltenbreite-col-1-safari-grid-s); /* missing Pixels in safari for col-1-span */
+
+
+/* Remove Pixel unit for a calculation how many elements have to add some space */
+$elements-for-col-6-grid-s: perctopx($missing-pixels-col-6-grid-s); 
+$elements-for-col-4-grid-s: perctopx($missing-pixels-col-4-grid-s); 
+$elements-for-col-3-grid-s: perctopx($missing-pixels-col-3-grid-s); 
+$elements-for-col-2-grid-s: perctopx($missing-pixels-col-2-grid-s); 
+$elements-for-col-1-grid-s: perctopx($missing-pixels-col-1-grid-s); 
+
+
+
+/* calculate the width of the column in Pixels depending on the grid settings*/
+$width-col-6-no-gutter-in-pixel-grid-s: floor((perctopx($grid-s-no-gutter) / 2)*1px); 
+$width-col-4-no-gutter-in-pixel-grid-s: floor((perctopx($grid-s-no-gutter) / 3)*1px); 
+$width-col-3-no-gutter-in-pixel-grid-s: floor((perctopx($grid-s-no-gutter) / 4)*1px); 
+$width-col-2-no-gutter-in-pixel-grid-s: floor((perctopx($grid-s-no-gutter) / 6)*1px); 
+$width-col-1-no-gutter-in-pixel-grid-s: floor((perctopx($grid-s-no-gutter) / 12)*1px); 
+
+
+ /* ============================ GRID S ohne Gutter ============================= */
+
+$spaltenbreite-col-6-with-gutter-grid-s: $grid-s / 2; /* for col-6-span */
+$spaltenbreite-col-4-with-gutter-grid-s: $grid-s / 3; /* for col-4-span */
+$spaltenbreite-col-3-with-gutter-grid-s: $grid-s / 4; /* for col-3-span */
+$spaltenbreite-col-2-with-gutter-grid-s: $grid-s / 6; /* for col-2-span */
+$spaltenbreite-col-1-with-gutter-grid-s: $grid-s / 12; /* for col-1-span */
+
+$spaltenbreite-col-6-with-gutter-safari-grid-s: floor($spaltenbreite-col-6-with-gutter-grid-s); /* rendered Column width in safari for col-6-span */
+$spaltenbreite-col-4-with-gutter-safari-grid-s: floor($spaltenbreite-col-4-with-gutter-grid-s); /* rendered Column width in safari for col-4-span */
+$spaltenbreite-col-3-with-gutter-safari-grid-s: floor($spaltenbreite-col-3-with-gutter-grid-s); /* rendered Column width in safari for col-3-span */
+$spaltenbreite-col-2-with-gutter-safari-grid-s: floor($spaltenbreite-col-2-with-gutter-grid-s); /* rendered Column width in safari for col-2-span */
+$spaltenbreite-col-1-with-gutter-safari-grid-s: floor($spaltenbreite-col-1-with-gutter-grid-s); /* rendered Column width in safari for col-1-span */
+
+$missing-pixels-col-6-with-gutter-grid-s: $grid-s - (2 * $spaltenbreite-col-6-with-gutter-safari-grid-s); /* missing Pixels in safari for col-6-span */
+$missing-pixels-col-4-with-gutter-grid-s: $grid-s - (3 * $spaltenbreite-col-4-with-gutter-safari-grid-s); /* missing Pixels in safari for col-4-span */
+$missing-pixels-col-3-with-gutter-grid-s: $grid-s - (4 * $spaltenbreite-col-3-with-gutter-safari-grid-s); /* missing Pixels in safari for col-3-span */
+$missing-pixels-col-2-with-gutter-grid-s: $grid-s - (6 * $spaltenbreite-col-2-with-gutter-safari-grid-s); /* missing Pixels in safari for col-2-span */
+$missing-pixels-col-1-with-gutter-grid-s: $grid-s - (12 * $spaltenbreite-col-1-with-gutter-safari-grid-s); /* missing Pixels in safari for col-1-span */
+
+/* Remove Pixel unit for a calculation how many elements have to add some space */
+$elements-for-col-6-with-gutter-grid-s: perctopx($missing-pixels-col-6-with-gutter-grid-s); 
+$elements-for-col-4-with-gutter-grid-s: perctopx($missing-pixels-col-4-with-gutter-grid-s); 
+$elements-for-col-3-with-gutter-grid-s: perctopx($missing-pixels-col-3-with-gutter-grid-s); 
+$elements-for-col-2-with-gutter-grid-s: perctopx($missing-pixels-col-2-with-gutter-grid-s); 
+$elements-for-col-1-with-gutter-grid-s: perctopx($missing-pixels-col-1-with-gutter-grid-s); 
+
+
+/* calculate the width of the column in Pixels depending on the grid settings*/
+$width-col-6-with-gutter-in-pixel-grid-s: floor((perctopx($grid-s) / 2)*1px); 
+$width-col-4-with-gutter-in-pixel-grid-s: floor((perctopx($grid-s) / 3)*1px); 
+$width-col-3-with-gutter-in-pixel-grid-s: floor((perctopx($grid-s) / 4)*1px); 
+$width-col-2-with-gutter-in-pixel-grid-s: floor((perctopx($grid-s) / 6)*1px); 
+$width-col-1-with-gutter-in-pixel-grid-s: floor((perctopx($grid-s) / 12)*1px); 
+
+
+
+
+/*  {@if $elements-for-col-1-with-gutter == 0 { width: $width-col-1-with-gutter-in-pixel; } @else  { width: $width-col-1-with-gutter-in-pixel + 1px; }}  */
+
+
+@media only screen and (min-width: $grid-xl + ($breakpoint-space + 1px)) 
+{ 
+	.safari .grid:not(.no-gutter) > .col-6-span 	{width: $width-col-6-with-gutter-in-pixel;}
+	.safari .grid:not(.no-gutter) > .col-6-span:nth-child(-n+#{$elements-for-col-6-with-gutter})	{width: $width-col-6-with-gutter-in-pixel + 1px;}
+
+	.safari .grid:not(.no-gutter) > .col-4-span	{width: $width-col-4-with-gutter-in-pixel;}
+	.safari .grid:not(.no-gutter) > .col-4-span:nth-child(-n+#{$elements-for-col-4-with-gutter})	{width: $width-col-4-with-gutter-in-pixel + 1px;}
+
+	.safari .grid:not(.no-gutter) > .col-3-span	{width: $width-col-3-with-gutter-in-pixel;}
+	.safari .grid:not(.no-gutter) > .col-3-span:nth-child(-n+#{$elements-for-col-3-with-gutter})	{width: $width-col-3-with-gutter-in-pixel + 1px;}
+
+	.safari .grid:not(.no-gutter) > .col-2-span	{width: $width-col-2-with-gutter-in-pixel;}
+	.safari .grid:not(.no-gutter) > .col-2-span:nth-child(-n+#{$elements-for-col-2-with-gutter})	{width: $width-col-2-with-gutter-in-pixel + 1px;}
+
+	.safari .grid:not(.no-gutter) > .col-1-span	{width: $width-col-1-with-gutter-in-pixel;}
+	.safari .grid:not(.no-gutter) > .col-1-span:nth-child(-n+#{$elements-for-col-1-with-gutter})	{width: $width-col-1-with-gutter-in-pixel + 1px;}
+
+
+
+	.safari .grid.no-gutter > .col-6-span	{width: $width-col-6-no-gutter-in-pixel;}
+	.safari .grid.no-gutter > .col-6-span:nth-child(-n+#{$elements-for-col-6})	{width: $width-col-6-no-gutter-in-pixel + 1px;}
+
+	.safari .grid.no-gutter > .col-4-span	{width: $width-col-4-no-gutter-in-pixel;}
+	.safari .grid.no-gutter > .col-4-span:nth-child(-n+#{$elements-for-col-4})	{width: $width-col-4-no-gutter-in-pixel + 1px;}
+
+	.safari .grid.no-gutter > .col-3-span	{width: $width-col-3-no-gutter-in-pixel;}
+	.safari .grid.no-gutter > .col-3-span:nth-child(-n+#{$elements-for-col-3})	{width: $width-col-3-no-gutter-in-pixel + 1px;}
+
+	.safari .grid.no-gutter > .col-2-span	{width: $width-col-2-no-gutter-in-pixel;}
+	.safari .grid.no-gutter > .col-2-span:nth-child(-n+#{$elements-for-col-2})	{width: $width-col-2-no-gutter-in-pixel + 1px;}
+
+	.safari .grid.no-gutter > .col-1-span	{width: $width-col-1-no-gutter-in-pixel;}
+	.safari .grid.no-gutter > .col-1-span:nth-child(-n+#{$elements-for-col-1})	{width: $width-col-1-no-gutter-in-pixel + 1px;}
+
+}
+
+@media only screen and (min-width: $grid-l + $breakpoint-space + 1px) and (max-width: $grid-xl + $breakpoint-space)  
+{ 
+	.safari .grid:not(.no-gutter) > .col-6-span	{width: $width-col-6-with-gutter-in-pixel-grid-l;}
+	.safari .grid:not(.no-gutter) > .col-6-span:nth-child(-n+#{$elements-for-col-6-with-gutter-grid-l})	{width: $width-col-6-with-gutter-in-pixel-grid-l + 1px;}
+
+	.safari .grid:not(.no-gutter) > .col-4-span	{width: $width-col-4-with-gutter-in-pixel-grid-l;}
+	.safari .grid:not(.no-gutter) > .col-4-span:nth-child(-n+#{$elements-for-col-4-with-gutter-grid-l})	{width: $width-col-4-with-gutter-in-pixel-grid-l + 1px;}
+
+	.safari .grid:not(.no-gutter) > .col-3-span	{width: $width-col-3-with-gutter-in-pixel-grid-l;}
+	.safari .grid:not(.no-gutter) > .col-3-span:nth-child(-n+#{$elements-for-col-3-with-gutter-grid-l})	{width: $width-col-3-with-gutter-in-pixel-grid-l + 1px;}
+
+	.safari .grid:not(.no-gutter) > .col-2-span	{width: $width-col-2-with-gutter-in-pixel-grid-l;}
+	.safari .grid:not(.no-gutter) > .col-2-span:nth-child(-n+#{$elements-for-col-2-with-gutter-grid-l})	{width: $width-col-2-with-gutter-in-pixel-grid-l + 1px;}
+
+	.safari .grid:not(.no-gutter) > .col-1-span	{width: $width-col-1-with-gutter-in-pixel-grid-l;}
+	.safari .grid:not(.no-gutter) > .col-1-span:nth-child(-n+#{$elements-for-col-1-with-gutter-grid-l})	{width: $width-col-1-with-gutter-in-pixel-grid-l + 1px;}
+
+
+
+	.safari .grid.no-gutter > .col-6-span	{width: $width-col-6-no-gutter-in-pixel-grid-l;}
+	.safari .grid.no-gutter > .col-6-span:nth-child(-n+#{$elements-for-col-6-grid-l})	{width: $width-col-6-no-gutter-in-pixel-grid-l + 1px;}
+
+	.safari .grid.no-gutter > .col-4-span	{width: $width-col-4-no-gutter-in-pixel-grid-l;}
+	.safari .grid.no-gutter > .col-4-span:nth-child(-n+#{$elements-for-col-4-grid-l})	{width: $width-col-4-no-gutter-in-pixel-grid-l + 1px;}
+
+	.safari .grid.no-gutter > .col-3-span	{width: $width-col-3-no-gutter-in-pixel-grid-l;}
+	.safari .grid.no-gutter > .col-3-span:nth-child(-n+#{$elements-for-col-3-grid-l})	{width: $width-col-3-no-gutter-in-pixel-grid-l + 1px;}
+
+	.safari .grid.no-gutter > .col-2-span	{width: $width-col-2-no-gutter-in-pixel-grid-l;}
+	.safari .grid.no-gutter > .col-2-span:nth-child(-n+#{$elements-for-col-2-grid-l})	{width: $width-col-2-no-gutter-in-pixel-grid-l + 1px;}
+
+	.safari .grid.no-gutter > .col-1-span	{width: $width-col-1-no-gutter-in-pixel-grid-l;}
+	.safari .grid.no-gutter > .col-1-span:nth-child(-n+#{$elements-for-col-1-grid-l})	{width: $width-col-1-no-gutter-in-pixel-grid-l + 1px;}
+
+}
+
+
+@media only screen and (min-width: $grid-m + $breakpoint-space + 1px) and (max-width: $grid-l + $breakpoint-space)  
+{
+
+	.safari .grid:not(.no-gutter) > .col-6-span	{width: $width-col-6-with-gutter-in-pixel-grid-m;}
+	.safari .grid:not(.no-gutter) > .col-6-span:nth-child(-n+#{$elements-for-col-6-with-gutter-grid-m})	{width: $width-col-6-with-gutter-in-pixel-grid-m + 1px;}
+
+	.safari .grid:not(.no-gutter) > .col-4-span	{width: $width-col-4-with-gutter-in-pixel-grid-m;}
+	.safari .grid:not(.no-gutter) > .col-4-span:nth-child(-n+#{$elements-for-col-4-with-gutter-grid-m})	{width: $width-col-4-with-gutter-in-pixel-grid-m + 1px;}
+
+	.safari .grid:not(.no-gutter) > .col-3-span	{width: $width-col-3-with-gutter-in-pixel-grid-m;}
+	.safari .grid:not(.no-gutter) > .col-3-span:nth-child(-n+#{$elements-for-col-3-with-gutter-grid-m})	{width: $width-col-3-with-gutter-in-pixel-grid-m + 1px;}
+
+	.safari .grid:not(.no-gutter) > .col-2-span	{width: $width-col-2-with-gutter-in-pixel-grid-m;}
+	.safari .grid:not(.no-gutter) > .col-2-span:nth-child(-n+#{$elements-for-col-2-with-gutter-grid-m})	{width: $width-col-2-with-gutter-in-pixel-grid-m + 1px;}
+
+	.safari .grid:not(.no-gutter) > .col-1-span	{width: $width-col-1-with-gutter-in-pixel-grid-m;}
+	.safari .grid:not(.no-gutter) > .col-1-span:nth-child(-n+#{$elements-for-col-1-with-gutter-grid-m})	{width: $width-col-1-with-gutter-in-pixel-grid-m + 1px;}
+
+
+
+	.safari .grid.no-gutter > .col-6-span	{width: $width-col-6-no-gutter-in-pixel-grid-m;}
+	.safari .grid.no-gutter > .col-6-span:nth-child(-n+#{$elements-for-col-6-grid-m})	{width: $width-col-6-no-gutter-in-pixel-grid-m + 1px;}
+
+	.safari .grid.no-gutter > .col-4-span	{width: $width-col-4-no-gutter-in-pixel-grid-m;}
+	.safari .grid.no-gutter > .col-4-span:nth-child(-n+#{$elements-for-col-4-grid-m})	{width: $width-col-4-no-gutter-in-pixel-grid-m + 1px;}
+
+	.safari .grid.no-gutter > .col-3-span	{width: $width-col-3-no-gutter-in-pixel-grid-m;}
+	.safari .grid.no-gutter > .col-3-span:nth-child(-n+#{$elements-for-col-3-grid-m})	{width: $width-col-3-no-gutter-in-pixel-grid-m + 1px;}
+
+	.safari .grid.no-gutter > .col-2-span	{width: $width-col-2-no-gutter-in-pixel-grid-m;}
+	.safari .grid.no-gutter > .col-2-span:nth-child(-n+#{$elements-for-col-2-grid-m})	{width: $width-col-2-no-gutter-in-pixel-grid-m + 1px;}
+
+	.safari .grid.no-gutter > .col-1-span	{width: $width-col-1-no-gutter-in-pixel-grid-m;}
+	.safari .grid.no-gutter > .col-1-span:nth-child(-n+#{$elements-for-col-1-grid-m})	{width: $width-col-1-no-gutter-in-pixel-grid-m + 1px;}
+
+}

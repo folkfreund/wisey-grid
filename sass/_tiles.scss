@@ -1,0 +1,79 @@
+
+/* =============================================
+   TILES
+   ============================================= */
+
+$grid-l-no-gutter: $grid-l - $gutter; /* for Grid XL no-gutter*/
+
+$spaltenbreite-grid-l-col-4: $grid-l-no-gutter / 3; /* for col-4-span */
+
+$spaltenbreite-grid-l-col-4-safari: floor($spaltenbreite-grid-l-col-4); /* rendered Column width in safari for col-4-span */
+
+
+
+
+$grid-m-no-gutter: $grid-m - $gutter; /* for Grid XL no-gutter*/
+
+$spaltenbreite-grid-m-col-4: $grid-m-no-gutter / 3; /* for col-4-span */
+
+$spaltenbreite-grid-m-col-4-safari: floor($spaltenbreite-grid-m-col-4); /* rendered Column width in safari for col-4-span */
+
+
+
+.grid.tiles	{
+	overflow: hidden;
+	}
+
+.grid.tiles [class*='col-'] {
+    position: relative;
+    }
+
+.grid.tiles .tile-element {
+    bottom: 1px;
+    left: 1px;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    }
+
+
+
+
+@media only screen and (min-width: $grid-xl + ($breakpoint-space + 1px)) 
+{ 
+.grid.tiles [class*='col-1-span']	{padding-bottom: $spaltenbreite-col-1-safari - ($gutter/2); }
+.grid.tiles [class*='col-2-span']	{padding-bottom: $spaltenbreite-col-2-safari - ($gutter/2); }
+.grid.tiles [class*='col-3-span']	{padding-bottom: $spaltenbreite-col-3-safari - ($gutter/2); }
+.grid.tiles [class*='col-4-span']	{padding-bottom: $spaltenbreite-col-4-safari - ($gutter/2); }
+.grid.tiles [class*='col-6-span']	{padding-bottom: $spaltenbreite-col-6-safari - ($gutter/2); }
+}
+
+@media only screen and (min-width: $grid-l + $breakpoint-space + 1px) and (max-width: $grid-xl + $breakpoint-space)  
+{ 
+.grid.tiles [class*='col-1-span']	{padding-bottom: $spaltenbreite-col-1-safari-grid-l - ($gutter/2); }
+.grid.tiles [class*='col-2-span']	{padding-bottom: $spaltenbreite-col-2-safari-grid-l - ($gutter/2); }
+.grid.tiles [class*='col-3-span']	{padding-bottom: $spaltenbreite-col-3-safari-grid-l - ($gutter/2); }
+.grid.tiles [class*='col-4-span']	{padding-bottom: $spaltenbreite-col-4-safari-grid-l - ($gutter/2); }
+.grid.tiles [class*='col-6-span']	{padding-bottom: $spaltenbreite-col-6-safari-grid-l - ($gutter/2); }
+}
+
+
+@media only screen and (min-width: $grid-m + $breakpoint-space + 1px) and (max-width: $grid-l + $breakpoint-space)  
+{
+.grid.tiles [class*='col-1-span']	{padding-bottom: $spaltenbreite-col-1-safari-grid-m - ($gutter/2); }
+.grid.tiles [class*='col-2-span']	{padding-bottom: $spaltenbreite-col-2-safari-grid-m - ($gutter/2); }
+.grid.tiles [class*='col-3-span']	{padding-bottom: $spaltenbreite-col-3-safari-grid-m - ($gutter/2); }
+.grid.tiles [class*='col-4-span']	{padding-bottom: $spaltenbreite-col-4-safari-grid-m - ($gutter/2); }
+.grid.tiles [class*='col-6-span']	{padding-bottom: $spaltenbreite-col-6-safari-grid-m - ($gutter/2); }
+}
+
+
+@media only screen and (min-width: $grid-s + $breakpoint-space + 1px) and (max-width: $grid-s + $breakpoint-space)  
+{
+.grid.tiles [class*='col-1-span']	{padding-bottom: $spaltenbreite-col-1-safari-grid-s - ($gutter/2); }
+.grid.tiles [class*='col-2-span']	{padding-bottom: $spaltenbreite-col-2-safari-grid-s - ($gutter/2); }
+.grid.tiles [class*='col-3-span']	{padding-bottom: $spaltenbreite-col-3-safari-grid-s - ($gutter/2); }
+.grid.tiles [class*='col-4-span']	{padding-bottom: $spaltenbreite-col-4-safari-grid-s - ($gutter/2); }
+.grid.tiles [class*='col-6-span']	{padding-bottom: $spaltenbreite-col-6-safari-grid-s - ($gutter/2); }
+}
+
