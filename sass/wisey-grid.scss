@@ -626,6 +626,7 @@ $convert-col-12-on-grid-xs: –;
 
 
 
+
 /* =========================================================
    FIX WEBKIT SUBPIXEL ISSUE (include detect-browser.js, adding to the width:0,078125%) 
    ========================================================= */
@@ -701,3 +702,78 @@ $width-col-1-no-gutter-in-pixel: floor((perctopx($grid-xl-no-gutter) / 12)*1px);
     /* Safari and Chrome */
 }
 
+
+
+/* =============================================
+   TILES
+   ============================================= */
+
+$grid-l-no-gutter: $grid-l - $gutter; /* for Grid XL no-gutter*/
+
+$spaltenbreite-grid-l-col-4: $grid-l-no-gutter / 3; /* for col-4-span */
+
+$spaltenbreite-grid-l-col-4-safari: floor($spaltenbreite-grid-l-col-4); /* rendered Column width in safari for col-4-span */
+
+
+
+
+$grid-m-no-gutter: $grid-m - $gutter; /* for Grid XL no-gutter*/
+
+$spaltenbreite-grid-m-col-4: $grid-m-no-gutter / 3; /* for col-4-span */
+
+$spaltenbreite-grid-m-col-4-safari: floor($spaltenbreite-grid-m-col-4); /* rendered Column width in safari for col-4-span */
+
+
+
+.grid.tiles	{
+	overflow: hidden;
+	}
+
+.grid.tiles [class*='col-'] {
+    position: relative;
+    }
+
+.grid.tiles .tile-element {
+    bottom: 1px;
+    left: 1px;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    }
+
+
+
+.grid.tiles [class*='col-1-span']	{padding-bottom: $width-1; }
+.grid.tiles [class*='col-2-span']	{padding-bottom: $width-2; }
+.grid.tiles [class*='col-3-span']	{padding-bottom: $width-3; }
+.grid.tiles [class*='col-4-span']	{padding-bottom: $spaltenbreite-col-4-safari - ($gutter/2); }
+.grid.tiles [class*='col-5-span']	{padding-bottom: $width-5; }
+.grid.tiles [class*='col-6-span']	{padding-bottom: $width-6; }
+.grid.tiles [class*='col-7-span']	{padding-bottom: $width-7; }
+.grid.tiles [class*='col-8-span']	{padding-bottom: $width-8; }
+.grid.tiles [class*='col-9-span']	{padding-bottom: $width-9; }
+.grid.tiles [class*='col-10-span']	{padding-bottom: $width-10; }
+.grid.tiles [class*='col-11-span']	{padding-bottom: $width-11; }
+.grid.tiles [class*='col-12-span']	{padding-bottom: $width-12; }
+
+
+
+@media only screen and (-webkit-min-device-pixel-ratio:0) and (min-width: $grid-xl) 
+{ 
+	.grid.tiles [class*='col-4-span']	{padding-bottom: $spaltenbreite-col-4-safari - ($gutter/2); }
+
+}
+
+
+
+@media only screen and (min-width: $grid-l) and (max-width: $grid-xl + $breakpoint-space)  
+{ 
+	.grid.tiles [class*='col-4-span']	{padding-bottom: $spaltenbreite-grid-l-col-4-safari - ($gutter/2); }
+}
+
+
+
+@media only screen and (min-width: $grid-m) and (max-width: $grid-l + $breakpoint-space)  
+{ 
+	.grid.tiles [class*='col-4-span']	{padding-bottom: $spaltenbreite-grid-m-col-4-safari - ($gutter/2); }
+}
